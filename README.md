@@ -26,4 +26,5 @@ DISCORD_TOKEN=<Discord Bot Token>
 ```
 
 To start the bot, simply run the following command:
+
 `python3 bot.py`
