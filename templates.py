@@ -26,6 +26,7 @@ class Meme:
     def get_result(self):
         return self.composition
 
+
 class ImpactMeme(Meme):
     def __init__(self):
         """
