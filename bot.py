@@ -26,8 +26,7 @@ async def on_ready():
     return
 
 
-@bot.command(
-    name='impachu', 
+@bot.command(name='impachu',
     help='Adds impact font to any image to create a meme')
 async def impact_command(ctx, url, top_text='', bottom_text=''):
     """

@@ -63,8 +63,8 @@ class ImpactMeme(Meme):
         # Shrink size if text larger than width of image
         text_width, _ = self.draw.textsize(text, font=font)
         image_width, _ = self.composition.size
-        while text_width >= image_width:
-            font_size -= 5
+        while text_width >= (image_width * 0.95):
+            font_size -= 1
             font = ImageFont.truetype(self.font_type, font_size)
             text_width, _ = self.draw.textsize(text, font=font)
 
