@@ -13,13 +13,15 @@ class Meme:
 
         return
 
-    """
-    Displays the meme to see
-    """
+
     def render_meme(self):
+        """
+        Displays the meme to see
+        """
         self.composition.show()
 
         return
+
 
     def get_result(self):
         return self.composition
@@ -39,6 +41,7 @@ class ImpactMeme(Meme):
 
         return
 
+
     def set_image(self, url):
         """
         Grab the image from URL
@@ -49,6 +52,7 @@ class ImpactMeme(Meme):
         self.composition = Image.open(self.composition)
 
         return
+
 
     def set_fontsize(self, size=0):
 
@@ -64,6 +68,7 @@ class ImpactMeme(Meme):
 
         return
 
+
     def set_toptext(self, text):
         self.top_text = text
         draw = ImageDraw.Draw(self.composition)
@@ -78,6 +83,7 @@ class ImpactMeme(Meme):
 
         return
 
+
     def set_bottomtext(self, text):
         self.bottom_text = text
         draw = ImageDraw.Draw(self.composition)
@@ -91,6 +97,7 @@ class ImpactMeme(Meme):
         self.__draw_outline_text(draw=draw, x=x, y=y, text=self.bottom_text, font=self.font)
 
         return
+
 
     def __draw_outline_text(self, draw, x, y, text, font):
         """
