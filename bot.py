@@ -13,10 +13,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 # Initialize bot
 bot = commands.Bot(
     command_prefix='!',
-    description='Boungiorno! I am Impachu.',
-    help_command=help_command)
-
-
+    description='Boungiorno! I am Impachu.')
 
 @bot.event
 async def on_ready():
