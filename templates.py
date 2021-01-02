@@ -55,7 +55,7 @@ class ImpactMeme(Meme):
         if size:
             self.font_size = size
 
-        # If font size not specified, determine dynamically based on image width
+        # If font size not specified, dynamically determine based on image width
         else:
             self.font_size = int(self.composition.size[0] / 10)
             print(self.font_size)
