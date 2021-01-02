@@ -5,11 +5,11 @@ def main():
     make_impact_meme()
 
 
-def make_impact_meme(image_url, top_text, bottom_text, font_size=50):
+def make_impact_meme(image_url, top_text, bottom_text, font_size=0):
 
     my_meme = templates.ImpactMeme()
     my_meme.set_image(image_url)
-    my_meme.set_fontsize(font_size)
+    my_meme.set_fontsize(size=font_size)
     my_meme.set_toptext(top_text)
     my_meme.set_bottomtext(bottom_text)
 
