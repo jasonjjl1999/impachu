@@ -103,10 +103,10 @@ class ImpactMeme(Meme):
         """
         Add signature outline to Impact Font
         """
-        draw.text((x-1, y), text, fill=(0, 0, 0), font=font)
-        draw.text((x+1, y), text, fill=(0, 0, 0), font=font)
-        draw.text((x, y-1), text, fill=(0, 0, 0), font=font)
-        draw.text((x, y+1), text, fill=(0, 0, 0), font=font)
+        # Determine black border based on font size
+        stroke_width = int(self.font_size / 15)
+
+        draw.text((x, y), text, fill=(0, 0, 0), font=font, stroke_width=stroke_width)
         draw.text((x, y), text, fill=(255, 255, 255), font=font)  
 
         return
