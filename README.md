@@ -9,8 +9,8 @@ Commands:
 
   **help** -- show help options
   
-     Usage: `!help`
+   `!help`
      
   **impachu** -- create basic impact font meme
   
-     Usage: `!impachu <Image URL> [<Top Text>][<Bottom Text>]`
+   `!impachu <Image URL> [<Top Text>][<Bottom Text>]`
