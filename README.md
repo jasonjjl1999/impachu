@@ -9,11 +9,11 @@ Commands:
 
   **help** -- show help options
   
-   ```!help```
+   `!help`
      
   **impachu** -- create basic impact font meme
   
-   ```!impachu <Image URL> [<Top Text>][<Bottom Text>]```
+   `!impachu <Image URL> [<Top Text>][<Bottom Text>]`
 
 ## Setting the Bot up Yourself
 
@@ -24,3 +24,6 @@ Prequisites
 #.env
 DISCORD_TOKEN=<Discord Bot Token>
 ```
+
+To start the bot, simply run the following command:
+`python3 bot.py`
