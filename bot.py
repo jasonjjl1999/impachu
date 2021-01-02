@@ -15,6 +15,7 @@ bot = commands.Bot(
     command_prefix='!',
     description='Boungiorno! I am Impachu.')
 
+
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
@@ -24,9 +25,6 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.idle, activity=activity)
     return
 
-@bot.command(name='test')
-async def help(ctx):
-    await bot.send_help()
 
 @bot.command(
     name='impachu', 
