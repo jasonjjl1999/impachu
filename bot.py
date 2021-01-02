@@ -13,7 +13,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 # Initialize bot
 bot = commands.Bot(
     command_prefix='!',
-    description='Boungiorno! I am Impachu.')
+    description='Buongiorno! I am Impachu.')
 
 
 @bot.event
@@ -39,7 +39,7 @@ async def impact_command(ctx, url, top_text='', bottom_text=''):
     edited_meme = impachu.make_impact_meme(image_url=url, top_text=top_text, bottom_text=bottom_text)
     result_image = edited_meme.get_result()
 
-    await ctx.send("Happy New Year!")
+    await ctx.send('Happy New Year!')
     arr = BytesIO()
     result_image.save(arr, format='PNG')
     arr.seek(0)
