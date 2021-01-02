@@ -6,9 +6,11 @@ The bot can be added to your server [here](https://discord.com/api/oauth2/author
 ## Usage:
 
 Commands:
+
   **help** -- show help options
+  
      Usage: `!help`
+     
   **impachu** -- create basic impact font meme
+  
      Usage: `!impachu <Image URL> [<Top Text>][<Bottom Text>]`
-
-
