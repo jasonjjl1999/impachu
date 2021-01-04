@@ -19,7 +19,7 @@ bot = commands.Bot(
 @bot.event
 async def on_ready():
     print(f'{bot.user} has connected to Discord!')
-        
+
     # Set Activity
     activity = discord.Game(name='!help', type=3)
     await bot.change_presence(status=discord.Status.idle, activity=activity)
@@ -27,7 +27,7 @@ async def on_ready():
 
 
 @bot.command(name='impachu',
-    help='Adds impact font to any image to create a meme')
+             help='Adds impact font to any image to create a meme')
 async def impact_command(ctx, url, top_text='', bottom_text=''):
     """
     Bot Response for '--impact' command
@@ -35,7 +35,8 @@ async def impact_command(ctx, url, top_text='', bottom_text=''):
         --impact <URL> "<Top Text>" "<Bottom Text>"
     """
 
-    edited_meme = impachu.make_impact_meme(image_url=url, top_text=top_text, bottom_text=bottom_text)
+    edited_meme = impachu.make_impact_meme(
+        image_url=url, top_text=top_text, bottom_text=bottom_text)
     result_image = edited_meme.get_result()
 
     await ctx.send('Happy New Year!')

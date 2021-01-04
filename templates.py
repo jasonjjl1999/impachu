@@ -1,18 +1,19 @@
 # Impachu meme maker
 
-from PIL import Image, ImageFont, ImageDraw 
+from PIL import Image, ImageFont, ImageDraw
 import requests
 from io import BytesIO
+
 
 class Meme:
     """
     The basic meme object
     """
+
     def __init__(self):
         self.composition = None
 
         return
-
 
     def render_meme(self):
         """
@@ -21,7 +22,6 @@ class Meme:
         self.composition.show()
 
         return
-
 
     def get_result(self):
         return self.composition
@@ -39,7 +39,6 @@ class ImpactMeme(Meme):
 
         return
 
-
     def set_image(self, url):
         """
         Grab the image from URL
@@ -50,7 +49,6 @@ class ImpactMeme(Meme):
         self.draw = ImageDraw.Draw(self.composition)
 
         return
-
 
     def __get_font(self, text):
 
@@ -70,7 +68,6 @@ class ImpactMeme(Meme):
 
         return font
 
-
     def set_toptext(self, top_text):
         font = self.__get_font(top_text)
 
@@ -80,10 +77,9 @@ class ImpactMeme(Meme):
         x = (image_width - text_width) / 2
         y = 10
 
-        self.__draw_outline_text(x=x, y=y, text=top_text, font=font) 
+        self.__draw_outline_text(x=x, y=y, text=top_text, font=font)
 
         return
-
 
     def set_bottomtext(self, bottom_text):
         font = self.__get_font(bottom_text)
@@ -98,7 +94,6 @@ class ImpactMeme(Meme):
 
         return
 
-
     def __draw_outline_text(self, x, y, text, font):
         """
         Add signature outline to Impact Font
@@ -106,7 +101,8 @@ class ImpactMeme(Meme):
         # Determine black border based on font height
         stroke_width = int(font.getsize(text)[1] / 15)
 
-        self.draw.text((x, y), text, fill=(0, 0, 0), font=font, stroke_width=stroke_width)
-        self.draw.text((x, y), text, fill=(255, 255, 255), font=font)  
+        self.draw.text((x, y), text, fill=(0, 0, 0),
+                       font=font, stroke_width=stroke_width)
+        self.draw.text((x, y), text, fill=(255, 255, 255), font=font)
 
         return
