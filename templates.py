@@ -31,6 +31,7 @@ class ImpactMeme(Meme):
     """
     Impact Font Memes use one image URL and consists of top and bottom text
     """
+
     def __init__(self):
         super().__init__()
         self.image_url = ''
