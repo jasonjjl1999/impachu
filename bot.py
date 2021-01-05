@@ -1,9 +1,11 @@
 import os
+import shlex
 from io import BytesIO
+from dotenv import load_dotenv
+
 import discord
 from discord.ext import commands
-import shlex
-from dotenv import load_dotenv
+from pretty_help import PrettyHelp
 
 import impachu
 
@@ -13,7 +15,9 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 # Initialize bot
 bot = commands.Bot(
     command_prefix='!',
-    description='Buongiorno! I am Impachu.')
+    description='Buongiorno! I am Impachu. :zap:',
+    case_insensitive=True,
+    help_command=PrettyHelp())
 
 
 @bot.event
@@ -39,7 +43,6 @@ async def impact_command(ctx, url, top_text='', bottom_text=''):
         image_url=url, top_text=top_text, bottom_text=bottom_text)
     result_image = edited_meme.get_result()
 
-    await ctx.send('Happy New Year!')
     arr = BytesIO()
     result_image.save(arr, format='PNG')
     arr.seek(0)
