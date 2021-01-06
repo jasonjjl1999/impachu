@@ -7,7 +7,7 @@ import discord
 from discord.ext import commands
 from pretty_help import PrettyHelp
 
-import impachu
+import util
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -38,19 +38,14 @@ class Memes(commands.Cog, name='Memes'):
                       help='Adds impact font to any image to create a meme')
     async def impact_command(self, ctx, url, top_text='', bottom_text=''):
         """
-            Bot Response for '--impact' command
-            format:
-                --impact <URL> "<Top Text>" "<Bottom Text>"
-            """
+        Command for making impact format memes
+        """
 
-        edited_meme = impachu.make_impact_meme(
+        edited_meme = util.make_impact_meme(
             image_url=url, top_text=top_text, bottom_text=bottom_text)
         result_image = edited_meme.get_result()
 
-        arr = BytesIO()
-        result_image.save(arr, format='PNG')
-        arr.seek(0)
-        await ctx.send(file=discord.File(fp=arr, filename='meme.png'))
+        await ctx.send(file=discord.File(fp=result_image, filename='meme.gif'))
 
         return
 
