@@ -1,5 +1,6 @@
 import os
 import shlex
+import requests
 from io import BytesIO
 from dotenv import load_dotenv
 
@@ -32,21 +33,28 @@ async def on_ready():
 
 class Memes(commands.Cog, name='Memes'):
     """
-    Commands for making memes
+    Commands for making various types of memes
     """
-    @commands.command(name='impachu',
+    @commands.command(name='impact', aliases=['impachu'],
                       help='Adds impact font to any image to create a meme')
-    async def impact_command(self, ctx, url, top_text='', bottom_text=''):
+    async def impact(self, ctx, URL, top_text='', bottom_text=''):
         """
         Command for making impact format memes
         """
-
         edited_meme = util.make_impact_meme(
-            image_url=url, top_text=top_text, bottom_text=bottom_text)
+            image_url=URL, top_text=top_text, bottom_text=bottom_text)
         result_image = edited_meme.get_result()
-
         await ctx.send(file=discord.File(fp=result_image, filename='meme.gif'))
+        return
 
+    @impact.error
+    async def error(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send(error)
+        elif isinstance(error, commands.CommandInvokeError):
+            await ctx.send('Error executing command, please try again (Check that URL is valid).')
+        else:
+            await ctx.send('Error executing command, please try again.')
         return
 
 

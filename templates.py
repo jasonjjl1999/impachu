@@ -12,7 +12,6 @@ class Meme:
 
     def __init__(self):
         self.composition = None
-
         return
 
     def render_meme(self):
@@ -20,7 +19,6 @@ class Meme:
         Displays the meme to see
         """
         self.composition.show()
-
         return
 
     def get_result(self):
@@ -34,7 +32,6 @@ class Meme:
         else:
             self.composition.save(arr, format=self.composition.format)
         arr.seek(0)
-
         return arr
 
 
@@ -47,7 +44,6 @@ class ImpactMeme(Meme):
         super().__init__()
         self.image_url = ''
         self.font_type = 'fonts/impact.ttf'
-
         return
 
     def set_image(self, url):
@@ -57,11 +53,9 @@ class ImpactMeme(Meme):
         self.image_url = url
         response = requests.get(self.image_url)
         self.composition = Image.open(BytesIO(response.content))
-
         return
 
     def __get_font(self, text):
-
         draw = ImageDraw.Draw(self.composition)
         # Get font size based on image width
         font_size = int(self.composition.size[0] / 10)
@@ -76,7 +70,6 @@ class ImpactMeme(Meme):
             font_size -= 1
             font = ImageFont.truetype(self.font_type, font_size)
             text_width, _ = draw.textsize(text, font=font)
-
         return font
 
     def set_toptext(self, top_text):
@@ -87,10 +80,9 @@ class ImpactMeme(Meme):
         text_width, _ = draw.textsize(top_text, font=font)
         image_width, _ = self.composition.size
         x = (image_width - text_width) / 2
-        y = 10
+        y = 0
 
         self.__draw_outline_text(x=x, y=y, text=top_text, font=font)
-
         return
 
     def set_bottomtext(self, bottom_text):
@@ -101,10 +93,9 @@ class ImpactMeme(Meme):
         text_width, text_height = draw.textsize(bottom_text, font=font)
         image_width, image_height = self.composition.size
         x = (image_width - text_width) / 2
-        y = image_height - text_height - 10
+        y = (image_height - text_height) * 0.96
 
         self.__draw_outline_text(x=x, y=y, text=bottom_text, font=font)
-
         return
 
     def __draw_outline_text(self, x, y, text, font):
@@ -138,5 +129,4 @@ class ImpactMeme(Meme):
         else:
             frames[0].save(arr, format=self.composition.format)
         self.composition = Image.open(arr)
-
         return
