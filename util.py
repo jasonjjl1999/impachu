@@ -3,8 +3,7 @@ import templates
 
 def main():
 
-    make_poster_meme('https://media.wired.com/photos/598e35fb99d76447c4eb1f28/master/pass/phonepicutres-TA.jpg', 'ASDF', 'BOTTOM')
-
+    pass
 
 def make_impact_meme(image_url, top_text, bottom_text):
 
