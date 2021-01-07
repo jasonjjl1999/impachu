@@ -151,23 +151,26 @@ class PosterMeme(Meme):
         self.image_url = url
         response = requests.get(self.image_url)
         self.composition = Image.open(BytesIO(response.content))
-        
+
         image_width, image_height = self.composition.size
-        self.original_image_height = image_height
         self.border_thickness = max(image_width, image_height) / 15
         border_width = int(image_width + 2 * self.border_thickness)
         border_height = int(image_height + 2 * self.border_thickness)
 
-        border = Image.new(mode='RGBA', size=(
-            border_width, border_height + int(self.border_thickness * 3)), color=(0, 0, 0))
+        border = Image.new(mode='RGB', size=(
+            border_width, border_height + int(self.border_thickness * 2)), color=(0, 0, 0))
         border.paste(self.composition, (int(
             (border_width - image_width) / 2), int((border_height - image_height) / 2)))
 
+        border.format = self.composition.format
+        self.original_image_height = image_height
         self.composition = border
+                
         return
 
     def set_top_text(self, top_text):
-        font = ImageFont.truetype(self.font_type, int(self.border_thickness * 2))
+        font = ImageFont.truetype(
+            self.font_type, int(self.border_thickness * 2))
         draw = ImageDraw.Draw(self.composition)
 
         # Center text
@@ -180,7 +183,8 @@ class PosterMeme(Meme):
         return
 
     def set_bottom_text(self, bottom_text):
-        font = ImageFont.truetype(self.font_type, int(self.border_thickness / 2))
+        font = ImageFont.truetype(
+            self.font_type, int(self.border_thickness / 2))
         draw = ImageDraw.Draw(self.composition)
 
         # Center text

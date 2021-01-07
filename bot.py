@@ -48,7 +48,7 @@ class Memes(commands.Cog, name='Memes'):
         return
 
     @impact.error
-    async def error(self, ctx, error):
+    async def impact_error(self, ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
             await ctx.send(error)
         elif isinstance(error, commands.CommandInvokeError):
@@ -57,6 +57,17 @@ class Memes(commands.Cog, name='Memes'):
             await ctx.send('Error executing command, please try again.')
         return
 
+    @commands.command(name='poster',
+                      help='Adds (de)motivational poster format to any image')
+    async def poster(self, ctx, URL, top_text='', bottom_text=''):
+        """
+        Command for making poster format memes
+        """
+        edited_meme = util.make_poster_meme(
+            image_url=URL, top_text=top_text, bottom_text=bottom_text)
+        result_image = edited_meme.get_result()
+        await ctx.send(file=discord.File(fp=result_image, filename='meme.gif'))
+        return
 
 bot.add_cog(Memes())
 bot.run(TOKEN, bot=True)
