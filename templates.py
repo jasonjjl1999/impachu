@@ -130,3 +130,64 @@ class ImpactMeme(Meme):
             frames[0].save(arr, format=self.composition.format)
         self.composition = Image.open(arr)
         return
+
+
+class PosterMeme(Meme):
+    """
+    Poster Memes use one image URL and creates a black border motivational poster
+    """
+
+    def __init__(self):
+        super().__init__()
+        self.image_url = ''
+        self.font_type = 'fonts/times-new-roman.ttf'
+        self.original_image_height = 0
+        return
+
+    def set_image(self, url):
+        """
+        Grab the image from URL, then add black border
+        """
+        self.image_url = url
+        response = requests.get(self.image_url)
+        self.composition = Image.open(BytesIO(response.content))
+        
+        image_width, image_height = self.composition.size
+        self.original_image_height = image_height
+        self.border_thickness = max(image_width, image_height) / 15
+        border_width = int(image_width + 2 * self.border_thickness)
+        border_height = int(image_height + 2 * self.border_thickness)
+
+        border = Image.new(mode='RGBA', size=(
+            border_width, border_height + int(self.border_thickness * 3)), color=(0, 0, 0))
+        border.paste(self.composition, (int(
+            (border_width - image_width) / 2), int((border_height - image_height) / 2)))
+
+        self.composition = border
+        return
+
+    def set_top_text(self, top_text):
+        font = ImageFont.truetype(self.font_type, int(self.border_thickness * 2))
+        draw = ImageDraw.Draw(self.composition)
+
+        # Center text
+        text_width, _ = draw.textsize(top_text, font=font)
+        image_width, _ = self.composition.size
+        x = (image_width - text_width) / 2
+        y = self.original_image_height + self.border_thickness
+
+        draw.text((x, y), top_text, fill=(255, 255, 255), font=font)
+        return
+
+    def set_bottom_text(self, bottom_text):
+        font = ImageFont.truetype(self.font_type, int(self.border_thickness / 2))
+        draw = ImageDraw.Draw(self.composition)
+
+        # Center text
+        text_width, _ = draw.textsize(bottom_text, font=font)
+        image_width, _ = self.composition.size
+        x = (image_width - text_width) / 2
+        y = int(self.original_image_height + self.border_thickness * 3)
+
+        draw.text((x, y), bottom_text, fill=(255, 255, 255), font=font)
+        return
