@@ -29,7 +29,8 @@ class Meme:
         """
         arr = BytesIO()
         if getattr(self.composition, "is_animated", False):
-            self.composition.save(arr, format=self.composition.format, save_all=True)
+            self.composition.save(
+                arr, format=self.composition.format, save_all=True)
         else:
             self.composition.save(arr, format=self.composition.format)
         arr.seek(0)
@@ -121,7 +122,7 @@ class ImpactMeme(Meme):
 
             draw = ImageDraw.Draw(frame)
             draw.text((x, y), text, fill=(0, 0, 0),
-                        font=font, stroke_width=stroke_width)
+                      font=font, stroke_width=stroke_width)
             draw.text((x, y), text, fill=(255, 255, 255), font=font)
 
             arr = BytesIO()
@@ -132,7 +133,8 @@ class ImpactMeme(Meme):
 
         arr = BytesIO()
         if getattr(self.composition, "is_animated", False):
-            frames[0].save(arr, format=self.composition.format, save_all=True, append_images=frames[1:])
+            frames[0].save(arr, format=self.composition.format,
+                           save_all=True, append_images=frames[1:])
         else:
             frames[0].save(arr, format=self.composition.format)
         self.composition = Image.open(arr)
