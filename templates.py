@@ -141,31 +141,49 @@ class PosterMeme(Meme):
         super().__init__()
         self.image_url = ''
         self.font_type = 'fonts/times-new-roman.ttf'
-        self.original_image_height = 0
+        self.image_height = 0
         return
 
     def set_image(self, url):
         """
         Grab the image from URL, then add black border
         """
+        def add_thin_border(thickness, color):
+            image_width, image_height = self.composition.size
+            border_thickness = max(image_width, image_height) * thickness
+            border_width = int(image_width + 2 * border_thickness)
+            border_height = int(image_height + 2 * border_thickness)
+
+            border = Image.new(mode='RGB', size=(
+                border_width, border_height), color=color)
+            border.paste(self.composition, (int(
+                (border_width - image_width) / 2), int((border_height - image_height) / 2)))
+            border.format = self.composition.format
+            return border
+
+        def add_thick_border(thickness):
+            image_width, image_height = self.composition.size
+            self.border_thickness = max(image_width, image_height) * 0.065
+            border_width = int(image_width + 2 * self.border_thickness)
+            border_height = int(image_height + 2 * self.border_thickness)
+
+            border = Image.new(mode='RGB', size=(
+                border_width, border_height + int(self.border_thickness * 2)), color=(0, 0, 0))
+            border.paste(self.composition, (int(
+                (border_width - image_width) / 2), int((border_height - image_height) / 2)))
+            border.format = self.composition.format
+            return border
+
         self.image_url = url
         response = requests.get(self.image_url)
         self.composition = Image.open(BytesIO(response.content))
 
-        image_width, image_height = self.composition.size
-        self.border_thickness = max(image_width, image_height) / 15
-        border_width = int(image_width + 2 * self.border_thickness)
-        border_height = int(image_height + 2 * self.border_thickness)
+        self.composition = add_thin_border(thickness=0.005, color=(0, 0, 0))
+        self.composition = add_thin_border(thickness=0.003, color=(255, 255, 255))
+        self.image_height = self.composition.size[1]
+        self.composition = add_thick_border(thickness=0.07)
+        
 
-        border = Image.new(mode='RGB', size=(
-            border_width, border_height + int(self.border_thickness * 2)), color=(0, 0, 0))
-        border.paste(self.composition, (int(
-            (border_width - image_width) / 2), int((border_height - image_height) / 2)))
-
-        border.format = self.composition.format
-        self.original_image_height = image_height
-        self.composition = border
-                
         return
 
     def set_top_text(self, top_text):
@@ -177,7 +195,7 @@ class PosterMeme(Meme):
         text_width, _ = draw.textsize(top_text, font=font)
         image_width, _ = self.composition.size
         x = (image_width - text_width) / 2
-        y = self.original_image_height + self.border_thickness
+        y = self.image_height + self.border_thickness
 
         draw.text((x, y), top_text, fill=(255, 255, 255), font=font)
         return
@@ -191,7 +209,7 @@ class PosterMeme(Meme):
         text_width, _ = draw.textsize(bottom_text, font=font)
         image_width, _ = self.composition.size
         x = (image_width - text_width) / 2
-        y = int(self.original_image_height + self.border_thickness * 3)
+        y = int(self.image_height + self.border_thickness * 3)
 
         draw.text((x, y), bottom_text, fill=(255, 255, 255), font=font)
         return
