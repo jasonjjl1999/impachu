@@ -154,6 +154,12 @@ class PosterMeme(Meme):
             border_width = int(image_width + 2 * border_thickness)
             border_height = int(image_height + 2 * border_thickness)
 
+            # Ensure borders are centered
+            if (border_width - image_width) % 2 == 1:
+                border_width += 1
+            if (border_height - image_height) % 2 == 1:
+                border_height += 1
+
             border = Image.new(mode='RGB', size=(
                 border_width, border_height), color=color)
             border.paste(self.composition, (int(
@@ -166,6 +172,12 @@ class PosterMeme(Meme):
             self.border_thickness = max(image_width, image_height) * 0.065
             border_width = int(image_width + 2 * self.border_thickness)
             border_height = int(image_height + 2 * self.border_thickness)
+
+            # Ensure borders are centered
+            if (border_width - image_width) % 2 == 1:
+                border_width += 1
+            if (border_height - image_height) % 2 == 1:
+                border_height += 1
 
             border = Image.new(mode='RGB', size=(
                 border_width, border_height + int(self.border_thickness * 2)), color=(0, 0, 0))
