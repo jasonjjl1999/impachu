@@ -1,5 +1,5 @@
 # impachu
-Discord bot for making memes. (Currently only supports impact font memes)
+Discord bot for making memes.
 
 The bot can be added to your server [here](https://discord.com/api/oauth2/authorize?client_id=794697319659732992&permissions=0&scope=bot).
 
@@ -13,7 +13,7 @@ Commands:
      
   **impact** -- create basic impact font meme
   
-   `!impact <URL> [top_text] [botom_text]`
+   `!impact <URL> [top_text] [bottom_text]`
    
    **poster** -- create (de)motivational poster meme
    
