@@ -140,7 +140,8 @@ class PosterMeme(Meme):
     def __init__(self):
         super().__init__()
         self.image_url = ''
-        self.font_type = 'fonts/times-new-roman.ttf'
+        self.top_font_type = 'fonts/times-new-roman.ttf'
+        self.bottom_font_type = 'fonts/ARIAL.ttf'
         self.image_height = 0
         return
 
@@ -191,16 +192,16 @@ class PosterMeme(Meme):
         self.composition = Image.open(BytesIO(response.content))
 
         self.composition = add_thin_border(thickness=0.005, color=(0, 0, 0))
-        self.composition = add_thin_border(thickness=0.003, color=(255, 255, 255))
+        self.composition = add_thin_border(
+            thickness=0.003, color=(255, 255, 255))
         self.image_height = self.composition.size[1]
         self.composition = add_thick_border(thickness=0.07)
-        
 
         return
 
     def set_top_text(self, top_text):
         font = ImageFont.truetype(
-            self.font_type, int(self.border_thickness * 2))
+            self.top_font_type, int(self.border_thickness * 2))
         draw = ImageDraw.Draw(self.composition)
 
         # Center text
@@ -214,7 +215,7 @@ class PosterMeme(Meme):
 
     def set_bottom_text(self, bottom_text):
         font = ImageFont.truetype(
-            self.font_type, int(self.border_thickness / 2))
+            self.bottom_font_type, int(self.border_thickness / 2))
         draw = ImageDraw.Draw(self.composition)
 
         # Center text
