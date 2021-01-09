@@ -11,9 +11,13 @@ Commands:
   
    `!help`
      
-  **impachu** -- create basic impact font meme
+  **impact** -- create basic impact font meme
   
-   `!impachu <Image URL> [<Top Text>][<Bottom Text>]`
+   `!impact <URL> [top_text] [botom_text]`
+   
+   **poster** -- create (de)motivational poster meme
+   
+   `!poster <URL> [top_text] [bottom_text]`
 
 ## Setting the Bot up Yourself
 
