@@ -199,7 +199,7 @@ class PosterMeme(Meme):
 
         return
 
-    def set_top_text(self, top_text):
+    def set_toptext(self, top_text):
         font = ImageFont.truetype(
             self.top_font_type, int(self.border_thickness * 2))
         draw = ImageDraw.Draw(self.composition)
@@ -213,7 +213,7 @@ class PosterMeme(Meme):
         draw.text((x, y), top_text, fill=(255, 255, 255), font=font)
         return
 
-    def set_bottom_text(self, bottom_text):
+    def set_bottomtext(self, bottom_text):
         font = ImageFont.truetype(
             self.bottom_font_type, int(self.border_thickness / 2))
         draw = ImageDraw.Draw(self.composition)
