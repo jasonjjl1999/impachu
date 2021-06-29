@@ -5,7 +5,7 @@ from PIL import Image, ImageFont, ImageDraw, ImageSequence
 import requests
 from io import BytesIO
 
-ROOT_DIR = (Path(__file__).parents[1]).resolve()
+ROOT_DIR = (Path(__file__).parents[2]).resolve()
 FONT_DIR = ROOT_DIR / 'fonts'
 
 class Meme:
