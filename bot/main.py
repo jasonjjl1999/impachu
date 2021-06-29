@@ -8,7 +8,7 @@ import discord
 from discord.ext import commands
 from pretty_help import PrettyHelp
 
-import templates
+import impachu.templates
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -41,7 +41,7 @@ class Memes(commands.Cog, name='Memes'):
         """
         Command for making impact format memes
         """
-        impact_meme = templates.ImpactMeme()
+        impact_meme = impachu.templates.ImpactMeme()
         impact_meme.set_image(url)
         impact_meme.set_toptext(top_text)
         impact_meme.set_bottomtext(bottom_text)
@@ -66,7 +66,7 @@ class Memes(commands.Cog, name='Memes'):
         """
         Command for making poster format memes
         """
-        poster_meme = templates.PosterMeme()
+        poster_meme = impachu.templates.PosterMeme()
         poster_meme.set_image(url)
         poster_meme.set_toptext(top_text)
         poster_meme.set_bottomtext(bottom_text)
@@ -76,4 +76,6 @@ class Memes(commands.Cog, name='Memes'):
         return
 
 bot.add_cog(Memes())
-bot.run(TOKEN, bot=True)
+
+def main():
+    bot.run(TOKEN, bot=True)

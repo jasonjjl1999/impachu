@@ -43,7 +43,7 @@ class ImpactMeme(Meme):
     def __init__(self):
         super().__init__()
         self.image_url = ''
-        self.font_type = 'fonts/impact.ttf'
+        self.font_type = '../fonts/impact.ttf'
         return
 
     def set_image(self, url):
@@ -140,8 +140,8 @@ class PosterMeme(Meme):
     def __init__(self):
         super().__init__()
         self.image_url = ''
-        self.top_font_type = 'fonts/times-new-roman.ttf'
-        self.bottom_font_type = 'fonts/ARIAL.ttf'
+        self.top_font_type = '../fonts/times-new-roman.ttf'
+        self.bottom_font_type = '../fonts/ARIAL.ttf'
         self.image_height = 0
         return
 

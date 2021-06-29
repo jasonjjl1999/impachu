@@ -22,13 +22,14 @@ Commands:
 ## Setting the Bot up Yourself
 
 Prequisites 
-- python3 environment along with all packages specified in `requirements.txt`
+- python3 virtual environment along with all packages specified in `requirements.txt`
+- Install impachu package by calling `pip install -e .` in the root directory
 - Discord Bot token stored in `.env` file in root directory of repo with the following format:
 ```
 #.env
 DISCORD_TOKEN=<Discord Bot Token>
 ```
 
-To start the bot, simply run the following command:
+To start the bot, call the `run` script in the `bin` folder.
 
-`python3 bot.py`
+`./bin/run`

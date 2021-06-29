@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+import requests
+from impachu.main import main
+
+main()
