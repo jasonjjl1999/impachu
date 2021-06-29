@@ -1,9 +1,12 @@
 # Meme Templates
 
+from pathlib import Path
 from PIL import Image, ImageFont, ImageDraw, ImageSequence
 import requests
 from io import BytesIO
 
+ROOT_DIR = (Path(__file__).parents[1]).resolve()
+FONT_DIR = ROOT_DIR / 'fonts'
 
 class Meme:
     """
@@ -43,7 +46,7 @@ class ImpactMeme(Meme):
     def __init__(self):
         super().__init__()
         self.image_url = ''
-        self.font_type = '../fonts/impact.ttf'
+        self.font_type = str(FONT_DIR / 'impact.ttf')
         return
 
     def set_image(self, url):
@@ -140,8 +143,8 @@ class PosterMeme(Meme):
     def __init__(self):
         super().__init__()
         self.image_url = ''
-        self.top_font_type = '../fonts/times-new-roman.ttf'
-        self.bottom_font_type = '../fonts/ARIAL.ttf'
+        self.top_font_type = str(FONT_DIR / 'times-new-roman.ttf')
+        self.bottom_font_type = str(FONT_DIR / 'ARIAL.ttf')
         self.image_height = 0
         return
 
