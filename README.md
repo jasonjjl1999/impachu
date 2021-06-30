@@ -22,6 +22,8 @@ Commands:
 ## Setting the Bot up Yourself
 
 Prequisites 
+- cmake installed
+- python wheel installed
 - python3 virtual environment along with all packages specified in `requirements.txt`
 - Install impachu package by calling `pip install -e .` in the root directory
 - Discord Bot token stored in `.env` file in root directory of repo with the following format:
