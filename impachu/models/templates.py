@@ -38,7 +38,7 @@ class GANsNRoses:
         arr.seek(0)
         return arr
 
-    def run_inference(self, url, seed=None):
+    def run_inference(self, url, seed=0):
         latent_dim = 8
         n_mlp = 5
         num_down = 3
