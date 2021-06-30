@@ -5,6 +5,7 @@ from discord.ext import commands
 from pretty_help import PrettyHelp
 
 from impachu.memes.commands import Memes
+from impachu.models.commands import Models
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -28,6 +29,7 @@ async def on_ready():
 
 
 bot.add_cog(Memes())
+bot.add_cog(Models())
 
 def main():
     bot.run(TOKEN, bot=True)
