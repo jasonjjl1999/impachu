@@ -3,7 +3,7 @@ from discord.ext import commands
 from impachu.models.templates import GANsNRoses
 
 
-class Models(commands.Cog, name='Memes'):
+class Models(commands.Cog, name='Models'):
     """
     Commands for using various types of AI-models
     """
