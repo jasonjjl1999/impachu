@@ -16,7 +16,7 @@ Commands:
   
    `!impact <URL> [top_text] [bottom_text]`
 
-    ![Impact gif](images/generated-meme.gif)
+  ![Impact gif](images/generated-meme.gif)
    
    **poster** -- create (de)motivational poster meme
    
