@@ -15,10 +15,14 @@ Commands:
   **impact** -- create basic impact font meme
   
    `!impact <URL> [top_text] [bottom_text]`
+
+  ![Impact gif](images/generated-meme.gif)
    
    **poster** -- create (de)motivational poster meme
    
    `!poster <URL> [top_text] [bottom_text]`
+
+  ![Motivational Poster](images/everest.png)
 
    **anime** -- create AI generated anime face from a still image
 
