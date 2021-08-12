@@ -31,9 +31,7 @@ Through this [link](https://discord.com/api/oauth2/authorize?client_id=794697319
 However, if you want to host the bot on your own server, follow these instructions:
 
 
-1. Install CMake
-
-On Ubuntu run `sudo apt-get install cmake`
+1. Install Python (>= version 3.7)
 
 2. Install required python packages specified in `requirements.txt`
 
@@ -59,3 +57,5 @@ Your Discord bot token can be acquired by creating a bot from the [Discord Devel
 To start the bot, call the `run` script located within the `bin` folder.
 
 `./bin/run`
+
+You should now see a message "Impachu has connected to Discord!"
