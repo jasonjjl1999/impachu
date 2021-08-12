@@ -28,6 +28,8 @@ Commands:
 
    `!anime <URL> [seed]`
 
+  ![Anime Face Generation](images/ai-face.png)
+
 ## Setting the Bot up Yourself
 
 Through this [link](https://discord.com/api/oauth2/authorize?client_id=794697319659732992&permissions=0&scope=bot), you can add the bot to your server and start using the bot with minimal setup.
