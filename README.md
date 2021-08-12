@@ -22,6 +22,8 @@ Commands:
    
    `!poster <URL> [top_text] [bottom_text]`
 
+  ![Motivational Poster](images/everest.png)
+
    **anime** -- create AI generated anime face from a still image
 
    `!anime <URL> [seed]`
