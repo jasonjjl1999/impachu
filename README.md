@@ -15,6 +15,8 @@ Commands:
   **impact** -- create basic impact font meme
   
    `!impact <URL> [top_text] [bottom_text]`
+
+    ![Impact gif](images/generated-meme.gif?raw=true "Impact gif")
    
    **poster** -- create (de)motivational poster meme
    
