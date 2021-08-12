@@ -1,25 +1,13 @@
 import os
-import numpy as np
 import torch
-from torch import nn
-from torch.nn import functional as F
-from torch.utils import data
 from torchvision import transforms, utils
-from tqdm import tqdm
 torch.backends.cudnn.benchmark = True
-import copy
 from io import BytesIO
 from impachu.models.gans_n_roses.util import *
 from PIL import Image
 
 from impachu.models.gans_n_roses.model import *
-import moviepy.video.io.ImageSequenceClip
-import scipy
-import cv2
-import dlib
 import requests
-import kornia.augmentation as K
-from IPython.display import Video
 
 
 class GANsNRoses:
@@ -66,7 +54,7 @@ class GANsNRoses:
         if seed:
             torch.manual_seed(seed)
 
-        num_styles = 5
+        num_styles = 1
         style = torch.randn([num_styles, latent_dim])
 
         response = requests.get(url)
